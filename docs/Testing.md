@@ -63,12 +63,18 @@ xcodebuild -project PocketBonham.xcodeproj -scheme PocketBonham \
   CODE_SIGNING_ALLOWED=NO test
 ```
 
-The latest run passed all four workflows in about 86 seconds:
+The full vintage/velocity run passed all six workflows in about 130 seconds:
 
 1. Drum Kit 1 is selected for a fresh library; all nine pads can be auditioned across both pages.
 2. Create and save a pattern, play it, save/play a chain, relaunch and find the saved pattern.
 3. Reach all sixteen steps, toggle/undo, open locks, record pads, then verify foreground return stays stopped.
-4. At accessibility XXXL text size, transport, Save and Undo remain available.
+4. At accessibility XXXL text size, transport, Save, Undo and the instrument selector remain available.
+5. The dropdown exposes every instrument, preserves independent steps and jumps to the selected pad page.
+6. Hold/slide on Snare step 5 changes only its velocity, clamps to 1–127, groups Undo, preserves a simultaneous kick, survives save/reopen and keeps normal tap-to-toggle behavior.
+
+After final layout refinements, the pad and accessibility tests passed again; the pad test also asserts that all eight pads fit above the transport at standard text size.
+
+See the [vintage/velocity verification summary](evidence/vintage-velocity-verification.txt).
 
 Every test gets its own Debug support directory through `PB_TEST_SESSION`; never erase an ordinary user library to get a test to pass. Screenshots and full result bundles are written locally under `build/`. Selected screenshots and concise result summaries are committed under `docs/`.
 

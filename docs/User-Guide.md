@@ -3,13 +3,13 @@
 ## Make your first pattern
 
 1. Open **Pattern**. A new library starts with **Drum Kit 1** at 120 BPM.
-2. Select **Kick** in the horizontal instrument row, then tap steps **1, 5, 9 and 13**.
+2. Choose **Kick** from the **Instrument** dropdown, then tap steps **1, 5, 9 and 13**.
 3. Select **Snare** and enable steps **5 and 13**. The kick notes remain in their own track.
 4. Select a hat and add a rhythm. Several instruments can share a step, including two hats.
 5. Press **Play**. Four quarter-note clicks lead into the looping pattern. **Stop** ends playback and resets the transport.
 6. Press **Save**, enter a name and save the pattern to the library.
 
-Every pattern is one 16-step bar in 4/4. The grid shows the selected instrument's steps. Selecting another drum changes what you are editing; it does not solo that drum. Swipe the instrument row horizontally to reach the rest of the kit.
+Every pattern is one 16-step bar in 4/4. The grid shows the selected instrument's steps. Selecting another drum changes what you are editing; it does not solo that drum. Tap the **Instrument** dropdown to choose any drum directly. The current drum has a checkmark; mute/solo labels remain visible. Selecting an instrument also brings its pad page into view.
 
 ## Transport, tempo and swing
 
@@ -21,7 +21,11 @@ Leaving the app stops playback. Returning to the foreground prepares the instrum
 
 ## Shape a hit
 
-Long-press a step, or select it and open **Step Details**. You can enable the hit, adjust its level, choose a retrigger count, and override pitch or decay for that step.
+To change a note quickly, select its instrument and **hold an enabled step for a moment**. A vertical velocity fader appears beside the pads. Keep your finger down and slide **up for louder, down for softer**, then release to close it. The amber readout shows 1–127; the small bar on the pad reflects its level. Only that instrument's note on that step changes, even when other drums share the step. One **Undo** restores the entire drag.
+
+[See the velocity fader](images/velocity.png). For example, select Snare, enable step 5, then hold step 5 and drag. This changes that snare hit, leaving the kick on step 5 and other snare hits intact. A normal tap still toggles the note. With VoiceOver, an enabled step supports increment/decrement adjustments in five-level increments.
+
+Use **Step Details** below the grid for exact hit levels, retriggers, pitch and decay locks. Holding a disabled step opens these details without creating a note.
 
 | Control | Range | Effect |
 |---|---|---|
@@ -60,7 +64,7 @@ This behavior was changed after the owner's playback feedback. The original spec
 
 Mute and solo are temporary performance controls. They affect both programmed notes and pad audition. Multiple tracks can be soloed; mute wins if a track is both muted and soloed. Use **Clear Mutes / Solos** to return to ordinary playback. Existing shared room energy can finish ringing after its source is muted.
 
-The speaker button near the instrument row auditions the selected drum. Simply selecting an instrument does not mute any other instrument.
+The speaker button beside the Instrument dropdown auditions the selected drum. Simply selecting an instrument does not mute any other instrument.
 
 ## Save, recover and manage your library
 

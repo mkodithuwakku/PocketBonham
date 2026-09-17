@@ -16,9 +16,9 @@ Built with **SwiftUI · UIKit · AVAudioEngine · Swift · C++17** for **iOS 18+
 
 ## From an idea to a groove
 
-Choose a drum and place hits on the grid. Dial in swing, add a snare roll, or pitch a single tom without changing the rest of the track. Switch to pads to overdub a performance, then save the pattern and combine it with others in a chain.
+Choose a drum and place hits on the grid. Hold a lit step and slide up or down to set its velocity. Dial in swing, add a snare roll, or pitch a single tom without changing the rest of the track. Switch to pads to overdub a performance, then save the pattern and combine it with others in a chain.
 
-The interface borrows the focus of a small hardware instrument: warm casing, dark pads, orange step lights, a readable tempo display, and transport controls kept close at hand.
+The interface borrows the focus of a small hardware instrument: walnut edges, cream keycaps, brass details, dark pads and an amber tempo display. A direct instrument dropdown and floating glass transport bring that vintage character into a modern iPhone interface. [See the per-note velocity fader](docs/images/velocity.png).
 
 | Make the beat | Give it character | Build the arrangement |
 |---|---|---|
@@ -43,7 +43,7 @@ Explore the [audio architecture](docs/Audio-Architecture.md) and [data model](do
 
 ## Project status
 
-A working development application with Drum Kit 1 integrated. The latest regression run passed **28 core tests and all four simulator UI tests**; the optional one-hour offline timing test passed in an earlier run. A signed iPhone Release build also succeeds.
+A working development application with Drum Kit 1 integrated. The latest regression run passed **28 core tests and all six simulator UI tests**; the optional one-hour offline timing test passed in an earlier run. A signed iPhone Release build also succeeds.
 
 Two additional owner kits and physical-device acceptance remain on the [roadmap](docs/Milestones.md). Simulator and offline results do not establish physical touch-to-sound latency or one-hour hardware stability. There is no App Store release linked here.
 

@@ -16,6 +16,16 @@
 - Preserved both closed-hat variants and the three numbered toms; no absent crash was substituted.
 - Made the owner kit the default for fresh libraries and supported its ninth pad on a second page.
 
+### Interface
+
+- Added a vintage cream, walnut and brass theme with an amber display and tactile step/pad surfaces.
+- Blended the instrument selector and floating transport with native Liquid Glass on iOS 26 and material fallbacks on older systems.
+- Replaced horizontal instrument scrolling with a complete-kit dropdown, current-selection checkmark, mute/solo labels and direct pad-page navigation.
+- Added press-and-slide per-note velocity with a vertical fader, pad level indicators, single-gesture Undo and VoiceOver adjustments.
+- Added recessed pad wells, case bevels, speaker slots and engraved model lettering.
+- Avoided unnecessary idle display refreshes while preserving audio-clock recording feedback.
+- Preserved reduced-transparency and reduced-motion accessibility preferences.
+
 ### Fixes
 
 - Fixed same-step hats cutting each other off: simultaneous open/closed hats and closed-hat variants now layer; later hits still choke earlier tails.

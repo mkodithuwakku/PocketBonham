@@ -107,8 +107,9 @@ final class AudioRig: @unchecked Sendable {
   }
 }
 @MainActor final class AudioHost: ObservableObject {
-  @Published var status = PBStatus()
-  @Published var visualStatus = PBStatus()
+  // Keep recording timestamps fresh without rebuilding glass/menu views for every frame.
+  var status = PBStatus()
+  var visualStatus = PBStatus()
   private var positionHistory: [PBStatus] = []
   @Published var preparing = false
   @Published var running = false
@@ -165,16 +166,16 @@ final class AudioRig: @unchecked Sendable {
   }
   @objc private func tick() {
     if let rig {
-      status = pb_status(rig.kernel)
-      var visual = status
-      if status.state == 2 {
-        if positionHistory.last?.bar != status.bar {
-          positionHistory.append(status)
+      let next = pb_status(rig.kernel)
+      var visual = next
+      if next.state == 2 {
+        if positionHistory.last?.bar != next.bar {
+          positionHistory.append(next)
           if positionHistory.count > 4 { positionHistory.removeFirst() }
         }
         let presentationFrame =
-          Double(status.frame) + (CACurrentMediaTime() - status.hostSeconds - latency)
-          * status.sampleRate
+          Double(next.frame) + (CACurrentMediaTime() - next.hostSeconds - latency)
+          * next.sampleRate
         if let earlier = positionHistory.last(where: { $0.barStartFrame <= presentationFrame }) {
           visual = earlier
         }
@@ -182,16 +183,26 @@ final class AudioRig: @unchecked Sendable {
           visual.state = 1
           visual.count = 4
         } else {
-          let seconds = (presentationFrame - visual.barStartFrame) / status.sampleRate
+          let seconds = (presentationFrame - visual.barStartFrame) / next.sampleRate
           visual.step = Int32(
             (0..<16).last(where: {
               MusicalClock.onset(step: $0, bpm: Int(visual.bpm), swing: visual.swing) <= seconds
             }) ?? 0)
         }
       }
+      if presentationChanged(status, next) || presentationChanged(visualStatus, visual) {
+        objectWillChange.send()
+      }
+      status = next
       visualStatus = visual
     }
     onTick?()
+  }
+  private func presentationChanged(_ a: PBStatus, _ b: PBStatus) -> Bool {
+    a.state != b.state || a.count != b.count || a.step != b.step || a.entry != b.entry
+      || a.repeat != b.repeat || a.bpm != b.bpm || a.pending != b.pending
+      || a.voices != b.voices || a.stolenVoices != b.stolenVoices
+      || a.droppedCommands != b.droppedCommands || a.bar != b.bar || a.swing != b.swing
   }
   func configureSession() throws -> Double {
     let session = AVAudioSession.sharedInstance()

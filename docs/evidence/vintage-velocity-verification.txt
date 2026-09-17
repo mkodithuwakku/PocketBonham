@@ -1,0 +1,36 @@
+PocketBonham vintage interface and per-note velocity verification
+Date: 2026-09-17
+Toolchain: Xcode 26.3, Swift 6.2.4, iOS 26.2 SDK.
+Simulator: iPhone 16, iOS 26.3. Deployment target: iOS 18.
+
+Full simulator UI suite: 6 passed, zero failures, 130.271 seconds.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' passed (4.953 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testDetailsUndoRecordingAndLifecycle]' passed (24.267 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testHoldSlideVelocityIsPerNoteUndoableAndSaved]' passed (33.241 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testInstrumentDropdownPreservesIndependentSteps]' passed (15.230 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testOwnerKitNinePads]' passed (12.031 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testPatternSaveChainAndRelaunch]' passed (40.549 seconds).
+
+Final layout checks after pad sizing and large-text refinements: 2 passed, zero failures, 18.188 seconds.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' passed (5.241 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testOwnerKitNinePads]' passed (12.947 seconds).
+
+Core: swift test -c release
+Executed 29 tests, with 1 test skipped and 0 failures (0 unexpected) in 7.842 (7.851) seconds
+The opt-in offline hour was not rerun.
+
+Builds: simulator Debug build and signed generic-iPhone Release build succeeded.
+Release signature: codesign --verify --deep --strict succeeded.
+
+Behavior checked:
+- Snare step 5 hold/slide changes only that note; simultaneous kick remains at level 100.
+- Up/down drag clamps at 127/1; release leaves the note enabled and dismisses the fader.
+- One Undo restores the whole drag; saved level survives relaunch and explicit library reopen.
+- Ordinary taps still toggle; disabled-step hold still opens Step Details.
+- All nine dropdown entries preserve their own notes and navigate to the right pad page.
+- Pad recording, lifecycle stop, pattern/chain persistence and accessibility-size controls pass.
+- All eight standard-size live pads fit above the transport (explicit geometry assertion).
+
+Visual review: sequencer, velocity fader, dropdown, live pads and accessibility text size.
+Screenshots are under docs/images. The velocity still was extracted from an actual simulator gesture recording.
+No physical-device installation or listening/latency measurement was performed for this change.

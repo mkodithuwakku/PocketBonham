@@ -137,7 +137,7 @@ struct LibraryView: View {
           }
         }
       }
-    }.scrollContentBackground(.hidden).background(Color.casing).navigationTitle("Library")
+    }.scrollContentBackground(.hidden).background { InstrumentBackground() }.navigationTitle("Library")
       .searchable(text: $search, prompt: "Find a saved groove")
       .task { await store.refresh() }
       .alert(

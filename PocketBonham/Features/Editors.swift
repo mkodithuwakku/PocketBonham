@@ -263,7 +263,7 @@ struct SettingsView: View {
         }
         Section("Quick Guide") {
           Text(
-            "1. Select a drum and tap any of the 16 steps. Tap Audition to hear the selected drum. Long-press a step, or use Details, for level, rolls and locks."
+            "1. Choose a drum from the Instrument dropdown and tap any of the 16 steps. Hold a lit step, then slide up or down to change that note’s velocity. Use Step Details for exact levels, rolls and locks. The speaker button auditions the selected drum."
           )
           Text(
             "2. Play counts four beats, then loops. Tempo and swing edits wait for the next bar. Stop resets the transport and disarms Record."

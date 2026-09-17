@@ -64,6 +64,8 @@ Output: `build/DeviceData/Build/Products/Release-iphoneos/PocketBonham.app`. A s
 | `PocketBonham/App/AppStore.swift` | Main-actor editing state, histories, recording, saves and recovery |
 | `PocketBonham/Audio/AudioHost.swift` | Bundle catalog, session negotiation, off-thread preparation and C bridge |
 | `PocketBonham/Features/RootView.swift` | Pattern workspace, instrument selection, step grid and pads |
+| `PocketBonham/Features/StepTouchSurface.swift` | Tap/hold recognition and accessible per-note velocity gestures |
+| `PocketBonham/Features/InstrumentDesign.swift` | Vintage surfaces, static texture, keycaps and version-aware glass |
 | `PocketBonham/Features/Components.swift` | Shared controls, transport and UIKit touch-down pads |
 | `PocketBonham/Features/Editors.swift` | Step details, mixer, settings and help |
 | `PocketBonham/Features/LibraryView.swift` | Saved patterns/chains and recoverable drafts |

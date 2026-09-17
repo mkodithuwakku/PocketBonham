@@ -1,6 +1,81 @@
 import XCTest
 
 final class PocketBonhamUITests: XCTestCase {
+  @MainActor func testInstrumentDropdownPreservesIndependentSteps() throws {
+    let app = XCUIApplication()
+    app.launchEnvironment["PB_TEST_SESSION"] = UUID().uuidString
+    app.launch()
+    let selector = app.buttons["instrumentSelector"]
+    XCTAssertTrue(selector.waitForExistence(timeout: 10))
+    app.buttons["step-1"].tap()
+    selector.tap()
+    for role in ["kick", "snare", "closedHat", "closedHat2", "openHat", "tomExtra1", "tomExtra2", "tomExtra3", "ride"] {
+      XCTAssertTrue(app.buttons["instrument-option-\(role)"].exists, "Menu must contain \(role)")
+    }
+    let menu = XCTAttachment(screenshot: app.screenshot())
+    menu.name = "Instrument dropdown — complete kit"
+    menu.lifetime = .keepAlways
+    add(menu)
+    app.buttons["instrument-option-ride"].tap()
+    XCTAssertEqual(selector.value as? String, "Ride")
+    XCTAssertTrue(app.buttons["step-1"].label.contains("disabled"))
+    app.buttons["step-1"].tap()
+    selector.tap()
+    app.buttons["instrument-option-kick"].tap()
+    XCTAssertTrue(app.buttons["step-1"].label.contains("kick, step 1, enabled"))
+    selector.tap()
+    app.buttons["instrument-option-ride"].tap()
+    XCTAssertTrue(app.buttons["step-1"].label.contains("ride, step 1, enabled"))
+    app.buttons["Play Pads"].tap()
+    XCTAssertTrue(app.buttons["pad-0"].label.contains("Ride"))
+    selector.tap()
+    app.buttons["instrument-option-closedHat2"].tap()
+    XCTAssertEqual(selector.value as? String, "Closed Hat 2")
+    XCTAssertTrue(app.buttons["pad-3"].label.contains("Closed Hat 2"))
+  }
+  @MainActor func testHoldSlideVelocityIsPerNoteUndoableAndSaved() throws {
+    let app = XCUIApplication()
+    app.launchEnvironment["PB_TEST_SESSION"] = UUID().uuidString
+    app.launch()
+    XCTAssertTrue(app.buttons["step-5"].waitForExistence(timeout: 10))
+    app.buttons["step-5"].tap() // Kick and snare share step five.
+    app.buttons["instrumentSelector"].tap()
+    app.buttons["instrument-option-snare"].tap()
+    let pad = app.buttons["step-5"]
+    pad.tap()
+    let center = pad.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+    center.press(forDuration: 0.5, thenDragTo: center.withOffset(CGVector(dx: 0, dy: 65)),
+      withVelocity: .slow, thenHoldForDuration: 0.3)
+    XCTAssertTrue(pad.label.contains("snare, step 5, enabled"))
+    XCTAssertFalse(pad.label.contains("level 100,"))
+    XCTAssertFalse(app.navigationBars["Step Details"].exists)
+    XCTAssertFalse(app.otherElements["velocityFader"].exists, "Release dismisses the fader")
+    app.buttons["undo"].tap()
+    XCTAssertTrue(pad.label.contains("level 100,"), "One Undo restores the entire drag")
+    center.press(forDuration: 0.5, thenDragTo: center.withOffset(CGVector(dx: 0, dy: -170)),
+      withVelocity: .slow, thenHoldForDuration: 0.3)
+    XCTAssertTrue(pad.label.contains("level 127,"), "Upward drag clamps to maximum")
+    center.press(forDuration: 0.5, thenDragTo: center.withOffset(CGVector(dx: 0, dy: 175)),
+      withVelocity: .slow, thenHoldForDuration: 0.3)
+    XCTAssertTrue(pad.label.contains("level 1,"), "Downward drag clamps without disabling the note")
+    XCTAssertTrue(app.buttons["step-6"].label.contains("disabled, level 100,"))
+    app.buttons["instrumentSelector"].tap()
+    app.buttons["instrument-option-kick"].tap()
+    XCTAssertTrue(pad.label.contains("kick, step 5, enabled, level 100,"))
+    app.buttons["savePattern"].tap()
+    app.alerts.textFields.firstMatch.clearAndEnter("Velocity Groove")
+    app.alerts.buttons["Save"].tap()
+    app.terminate()
+    app.launch()
+    XCTAssertTrue(app.buttons["instrumentSelector"].waitForExistence(timeout: 10))
+    app.tabBars.buttons["Library"].tap()
+    app.buttons.containing(.staticText, identifier: "Velocity Groove").firstMatch.tap()
+    app.buttons["instrumentSelector"].tap()
+    app.buttons["instrument-option-snare"].tap()
+    XCTAssertTrue(pad.label.contains("snare, step 5, enabled, level 1,"))
+    pad.tap()
+    XCTAssertTrue(pad.label.contains("disabled"), "A normal tap still toggles")
+  }
   @MainActor func testOwnerKitNinePads() throws {
     let app = XCUIApplication()
     app.launchEnvironment["PB_TEST_SESSION"] = UUID().uuidString
@@ -8,6 +83,8 @@ final class PocketBonhamUITests: XCTestCase {
     XCTAssertTrue(app.buttons["Drum Kit 1"].waitForExistence(timeout: 10))
     app.buttons["Play Pads"].tap()
     XCTAssertTrue(app.buttons["pad-0"].waitForExistence(timeout: 5))
+    XCTAssertLessThanOrEqual(app.buttons["pad-7"].frame.maxY,
+      app.buttons["transportPlay"].frame.minY, "All eight pads should fit above the transport")
     for i in 0..<8 {
       XCTAssertTrue(app.buttons["pad-\(i)"].exists)
       app.buttons["pad-\(i)"].tap()
@@ -109,6 +186,7 @@ final class PocketBonhamUITests: XCTestCase {
     XCTAssertTrue(app.buttons["transportPlay"].isHittable)
     XCTAssertTrue(app.buttons["savePattern"].isHittable)
     XCTAssertTrue(app.buttons["undo"].exists)
+    XCTAssertTrue(app.buttons["instrumentSelector"].isHittable)
     let attachment = XCTAttachment(screenshot: app.screenshot())
     attachment.name = "Accessibility text size"
     attachment.lifetime = .keepAlways

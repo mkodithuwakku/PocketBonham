@@ -3,18 +3,23 @@ import SwiftUI
 import UIKit
 
 extension Color {
-  static let casing = Color(red: 0.93, green: 0.91, blue: 0.86)
-  static let ink = Color(red: 0.12, green: 0.17, blue: 0.16)
-  static let signal = Color(red: 0.80, green: 0.27, blue: 0.12)
-  static let moss = Color(red: 0.24, green: 0.39, blue: 0.33)
+  static let casing = Color(red: 0.91, green: 0.87, blue: 0.77)
+  static let ink = Color(red: 0.19, green: 0.18, blue: 0.15)
+  static let signal = Color(red: 0.68, green: 0.22, blue: 0.09)
+  static let moss = Color(red: 0.26, green: 0.36, blue: 0.26)
+  static let brass = Color(red: 0.59, green: 0.43, blue: 0.23)
+  static let walnut = Color(red: 0.24, green: 0.13, blue: 0.08)
+  static let amber = Color(red: 1, green: 0.70, blue: 0.34)
 }
 struct Panel<Content: View>: View {
   @ViewBuilder var content: Content
   var body: some View {
     VStack(alignment: .leading, spacing: 12) { content }.padding(16).frame(
       maxWidth: .infinity, alignment: .leading
-    ).background(.white.opacity(0.58), in: RoundedRectangle(cornerRadius: 18)).overlay(
-      RoundedRectangle(cornerRadius: 18).stroke(Color.ink.opacity(0.08)))
+    ).background(LinearGradient(colors: [.white.opacity(0.55), .casing.opacity(0.55)],
+      startPoint: .top, endPoint: .bottom), in: RoundedRectangle(cornerRadius: 14))
+      .overlay { RoundedRectangle(cornerRadius: 14).strokeBorder(Color.brass.opacity(0.35)) }
+      .shadow(color: Color.walnut.opacity(0.08), radius: 3, y: 2)
   }
 }
 struct ValueControl: View {
@@ -80,8 +85,8 @@ struct TransportView: View {
         }
       }
     }
-    .padding(.horizontal, 16).padding(.vertical, 10).background(
-      Color.casing.shadow(color: .black.opacity(0.08), radius: 8, y: -3))
+    .padding(10).instrumentGlass(radius: 28)
+    .padding(.horizontal, 12).padding(.vertical, 6)
   }
   var play: some View {
     Button {
@@ -136,6 +141,34 @@ struct TouchPads: UIViewRepresentable {
   }
 }
 final class DrumButton: UIButton {
+  private let face = CAGradientLayer()
+  private let lamp = CALayer()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    face.colors = [UIColor(red: 0.30, green: 0.29, blue: 0.25, alpha: 1).cgColor,
+      UIColor(Color.ink).cgColor]
+    face.cornerRadius = 10
+    layer.insertSublayer(face, at: 0)
+    lamp.cornerRadius = 1.5
+    lamp.backgroundColor = UIColor(Color.brass).cgColor
+    layer.addSublayer(lamp)
+    layer.borderColor = UIColor(Color.brass.opacity(0.65)).cgColor
+    layer.borderWidth = 1
+    layer.shadowColor = UIColor(Color.walnut).cgColor
+    layer.shadowOpacity = 0.35
+    layer.shadowOffset = CGSize(width: 0, height: 3)
+    layer.shadowRadius = 1
+  }
+  required init?(coder: NSCoder) { fatalError("Use programmatic pads") }
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    CATransaction.begin()
+    CATransaction.setDisableActions(true)
+    face.frame = bounds
+    lamp.frame = CGRect(x: bounds.midX - 9, y: 6, width: 18, height: 3)
+    layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 10).cgPath
+    CATransaction.commit()
+  }
   var strike: ((Double) -> Void)?
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     if let t = touches.first { strike?(t.timestamp) }
@@ -143,8 +176,10 @@ final class DrumButton: UIButton {
   }
   override var isHighlighted: Bool {
     didSet {
-      alpha = isHighlighted ? 0.6 : 1
-      transform = isHighlighted ? CGAffineTransform(scaleX: 0.97, y: 0.97) : .identity
+      lamp.backgroundColor = UIColor(isHighlighted ? Color.amber : Color.brass).cgColor
+      alpha = isHighlighted ? 0.85 : 1
+      transform = isHighlighted && !UIAccessibility.isReduceMotionEnabled
+        ? CGAffineTransform(translationX: 0, y: 2) : .identity
     }
   }
   override func accessibilityActivate() -> Bool {
@@ -195,8 +230,10 @@ final class PadSurface: UIView {
         b.accessibilityTraits = .button
         b.isExclusiveTouch = false
         b.isMultipleTouchEnabled = true
-        b.layer.cornerRadius = 14
-        b.titleLabel?.font = .monospacedSystemFont(ofSize: 15, weight: .bold)
+        b.layer.cornerRadius = 10
+        b.titleLabel?.font = UIFontMetrics(forTextStyle: .subheadline).scaledFont(
+          for: .monospacedSystemFont(ofSize: 14, weight: .semibold), maximumPointSize: 22)
+        b.titleLabel?.adjustsFontForContentSizeCategory = true
         b.titleLabel?.numberOfLines = 2
         b.titleLabel?.textAlignment = .center
         b.backgroundColor = UIColor(Color.ink)
@@ -217,8 +254,11 @@ final class PadSurface: UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     let w = (bounds.width - 10) / 2
+    let rows = max(1, (buttons.count + 1) / 2)
+    let rowHeight = bounds.height / CGFloat(rows)
     for (i, b) in buttons.enumerated() {
-      b.frame = CGRect(x: CGFloat(i % 2) * (w + 10), y: CGFloat(i / 2) * 64, width: w, height: 56)
+      b.frame = CGRect(x: CGFloat(i % 2) * (w + 10), y: CGFloat(i / 2) * rowHeight,
+        width: w, height: max(44, rowHeight - 8))
     }
   }
 }

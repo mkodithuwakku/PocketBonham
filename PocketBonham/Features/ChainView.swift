@@ -76,7 +76,7 @@ struct ChainView: View {
       } header: {
         Text("Arrangement · \(store.chain.entries.count) / 64 entries")
       }
-    }.scrollContentBackground(.hidden).background(Color.casing).navigationTitle("Chains").toolbar {
+    }.scrollContentBackground(.hidden).background { InstrumentBackground() }.navigationTitle("Chains").toolbar {
       ToolbarItem(placement: .topBarLeading) {
         Menu {
           Button("New Chain") { store.newChain() }

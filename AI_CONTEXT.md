@@ -23,6 +23,20 @@ Repository: `https://github.com/mkodithuwakku/PocketBonham.git`. Main branch: `m
 
 ## Owner decisions that matter
 
+### Vintage surfaces with modern glass and direct instrument selection
+
+The owner requested a more vintage analog appearance that blends with modern Apple glass. The pattern workspace now uses warm cream keycaps in a recessed bed, walnut side grips, a beveled case outline, speaker slots, brass details, an amber display and a serif wordmark. Shared background styling continues into Library and Chains. The instrument dropdown and floating transport use native Liquid Glass on iOS 26+, regular material on older supported systems, and an opaque fallback with Reduce Transparency. Pads retain touch-down playback and respect Reduce Motion for press feedback.
+
+The horizontal instrument scroller is replaced with an **Instrument** menu listing the entire current kit. Preserve its `instrumentSelector` accessibility identifier and `instrument-option-<role>` identifiers. Choosing a drum changes only editing selection and the appropriate pad page; notes on other tracks must remain intact. Audition remains a separate adjacent button. Visual components are in `PocketBonham/Features/InstrumentDesign.swift`; use the existing theme rather than introducing another palette.
+
+### Hold-and-slide per-note velocity
+
+Holding an enabled sequencer pad for 0.35 seconds reveals a vertical fader; the same finger drags up/down to change that note's `Step.level` (1–127), and release closes it. A 160-point vertical drag spans the full range. The target pattern UUID, instrument ID and step are captured at the beginning; other tracks and steps remain unchanged. Each drag is one undo group. Cancellation ends the group at its current value; backgrounding, navigation or selection changes dismiss the fader. Holding a disabled step still opens Step Details. Full Step Details remains available via the explicit button. VoiceOver supports ±5 adjustments.
+
+`StepTouchSurface.swift` bridges UIKit tap/long-press recognition so a held note never toggles off on release. Keep gesture identity stable across SwiftUI updates. The fader is a readout for the active finger gesture, not a separate modal slider.
+
+`AudioHost.tick()` still reads render status and recording feedback every display tick, but emits UI changes only when visible transport/diagnostic fields change. Do not restore unconditional 60 Hz invalidation of the entire glass interface or use this optimization to alter audio scheduling.
+
 ### Same-step hats must layer
 
 The owner reported that two hats placed on the same step muted one another and asked for a fix. This overrides SND-02/T-08 in the original specification, which gave a closed hat priority over a simultaneous open hat.
@@ -54,13 +68,13 @@ Drum Kit 1 sorts ahead of fixtures and is the fresh-library default. Existing ki
 ## Verification at this handoff
 
 - Latest ordinary package run after the hat fix: **29 discovered, 28 passed, one opt-in hour test skipped, zero failures**.
-- Latest simulator UI run: **4 passed, zero failures**, approximately 86 seconds.
+- Full simulator UI run: **6 passed, zero failures**, approximately 130 seconds; both affected layout tests passed again after final pad-size and large-text refinements.
 - The earlier full offline hour passed with every measured onset within one frame. It is accelerated musical time, not an hour of physical-phone stability.
 - All nine supplied samples decode at both 44.1 and 48 kHz. Kit 1 is 1.31 MiB of stereo PCM at 48 kHz; combined with fixtures, 3.26 MiB / 192 MiB preparation budget.
 - Simulator app built, installed and launched. Signed iPhone Release build and signature verification succeeded locally.
 - Physical installation was attempted but blocked by a locked phone (`kAMDMobileImageMounterDeviceLocked`, CoreDevice 12040). Do not describe the device build as installed.
 
-Evidence: [latest core](docs/evidence/hat-layering-core-tests.txt), [latest UI](docs/evidence/hat-layering-ui-tests.txt), [kit validation](docs/evidence/kit-1-validation.txt), [historical full hour](docs/evidence/offline-hour-tests.txt).
+Evidence: [latest UI/build/core summary](docs/evidence/vintage-velocity-verification.txt), [hat-fix core details](docs/evidence/hat-layering-core-tests.txt), [kit validation](docs/evidence/kit-1-validation.txt), [historical full hour](docs/evidence/offline-hour-tests.txt).
 
 ## Remaining work
 
