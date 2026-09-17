@@ -1,0 +1,31 @@
+[0/1] Planning build
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling BonhamCore Models.swift
+[3/7] Write Objects.LinkFileList
+[5/7] Linking bonham-validate-kit
+[6/7] Linking PocketBonhamEnginePackageTests
+Build complete! (3.48s)
+Test Suite 'Selected tests' started at 2026-09-17 15:34:05.960.
+Test Suite 'PocketBonhamEnginePackageTests.xctest' started at 2026-09-17 15:34:05.961.
+Test Suite 'RepositoryTests' started at 2026-09-17 15:34:05.961.
+Test Case '-[BonhamCoreTests.RepositoryTests testCorruptFutureSchemaAndRestoreBackup]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testCorruptFutureSchemaAndRestoreBackup]' passed (0.024 seconds).
+Test Case '-[BonhamCoreTests.RepositoryTests testFailedSavePreservesPreviousAndDraft]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testFailedSavePreservesPreviousAndDraft]' passed (0.009 seconds).
+Test Case '-[BonhamCoreTests.RepositoryTests testLibraryScaleAndUnsupportedRecordIsolation]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testLibraryScaleAndUnsupportedRecordIsolation]' passed (0.379 seconds).
+Test Case '-[BonhamCoreTests.RepositoryTests testRoundTripReferenceIntegrityRecoveryAndRevision]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testRoundTripReferenceIntegrityRecoveryAndRevision]' passed (0.024 seconds).
+Test Suite 'RepositoryTests' passed at 2026-09-17 15:34:06.398.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.436 (0.437) seconds
+Test Suite 'PocketBonhamEnginePackageTests.xctest' passed at 2026-09-17 15:34:06.398.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.436 (0.437) seconds
+Test Suite 'Selected tests' passed at 2026-09-17 15:34:06.398.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.436 (0.438) seconds
+Library scale: 1,000 patterns / 200 chains read in 0.112338708 seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

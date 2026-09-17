@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "kit-1",
+  "name": "Drum Kit 1",
+  "assetVersion": 1,
+  "instruments": [
+    {
+      "id": "kick",
+      "name": "Kick",
+      "order": 0,
+      "file": "Kick.wav",
+      "sha256": "e4713f4712735f9ba2fe7d687401b31a0f3aa4d9604c1ff44e250d4eb38eecca"
+    },
+    {
+      "id": "snare",
+      "name": "Snare",
+      "order": 1,
+      "file": "Snare.wav",
+      "sha256": "15e83cf45a8440a20e81ecce8b579e4d06a5faaa37f2450cb857f6f333b12f2f"
+    },
+    {
+      "id": "closedHat",
+      "name": "Closed Hat 1",
+      "order": 2,
+      "chokeGroup": "hats",
+      "hatType": "closed",
+      "file": "ClosedHat1.wav",
+      "sha256": "2e2bc10d24ff49fe7b85d218d2580205221219c4a969eb37df84f6f9ff0575d6"
+    },
+    {
+      "id": "closedHat2",
+      "name": "Closed Hat 2",
+      "order": 3,
+      "chokeGroup": "hats",
+      "hatType": "closed",
+      "file": "ClosedHat2.wav",
+      "sha256": "0ee1513cc2bd0ed9827151bd04ccc505bd61221eef047b03d633f992779f04d4"
+    },
+    {
+      "id": "openHat",
+      "name": "Open Hat",
+      "order": 4,
+      "chokeGroup": "hats",
+      "hatType": "open",
+      "file": "OpenHat.wav",
+      "sha256": "a3314bab291e3b24a212a6b0705f44af18deecdfd264b2171323a55a231564cf"
+    },
+    {
+      "id": "tomExtra1",
+      "name": "Tom 1",
+      "order": 5,
+      "file": "Tom1.wav",
+      "sha256": "1fc3bc371709cbbfbd859f6d032fcb8a02816e23e40ddccbc492cb31167c275b"
+    },
+    {
+      "id": "tomExtra2",
+      "name": "Tom 2",
+      "order": 6,
+      "file": "Tom2.wav",
+      "sha256": "51e679da26721994ff8b1730f30115a4b358720f8a5cc9c3c7a30bdab95173b4"
+    },
+    {
+      "id": "tomExtra3",
+      "name": "Tom 3",
+      "order": 7,
+      "file": "Tom3.wav",
+      "sha256": "7f8d6377d9476c653d85d29294658d3cbe1c01db5245b10ee68d6c26a40942d9"
+    },
+    {
+      "id": "ride",
+      "name": "Ride",
+      "order": 8,
+      "file": "Ride.wav",
+      "sha256": "2737f4aed213b2a2534782882bf840e9e8f722876cbbed57956f01ada6c664fc"
+    }
+  ]
+}

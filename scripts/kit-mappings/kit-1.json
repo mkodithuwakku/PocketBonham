@@ -1,0 +1,53 @@
+{
+  "Kick.wav": {
+    "id": "kick",
+    "name": "Kick",
+    "order": 0
+  },
+  "Snare.wav": {
+    "id": "snare",
+    "name": "Snare",
+    "order": 1
+  },
+  "ClosedHat1.wav": {
+    "id": "closedHat",
+    "name": "Closed Hat 1",
+    "order": 2,
+    "chokeGroup": "hats",
+    "hatType": "closed"
+  },
+  "ClosedHat2.wav": {
+    "id": "closedHat2",
+    "name": "Closed Hat 2",
+    "order": 3,
+    "chokeGroup": "hats",
+    "hatType": "closed"
+  },
+  "OpenHat.wav": {
+    "id": "openHat",
+    "name": "Open Hat",
+    "order": 4,
+    "chokeGroup": "hats",
+    "hatType": "open"
+  },
+  "Tom1.wav": {
+    "id": "tomExtra1",
+    "name": "Tom 1",
+    "order": 5
+  },
+  "Tom2.wav": {
+    "id": "tomExtra2",
+    "name": "Tom 2",
+    "order": 6
+  },
+  "Tom3.wav": {
+    "id": "tomExtra3",
+    "name": "Tom 3",
+    "order": 7
+  },
+  "Ride.wav": {
+    "id": "ride",
+    "name": "Ride",
+    "order": 8
+  }
+}

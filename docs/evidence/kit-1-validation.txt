@@ -1,0 +1,28 @@
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+[2/3] Compiling BonhamCore Models.swift
+[3/5] Compiling KitValidator main.swift
+[3/5] Write Objects.LinkFileList
+[4/5] Linking bonham-validate-kit
+Build of product 'bonham-validate-kit' complete! (4.47s)
+Development Sounds [development-fixtures, v1] — DEVELOPMENT FIXTURE
+  kick: 0.500 s, 0 ms to first >−80 dB sample; kick.wav
+  snare: 0.350 s, 0 ms to first >−80 dB sample; snare.wav
+  closedHat: 0.130 s, 0 ms to first >−80 dB sample; closedHat.wav
+  openHat: 0.800 s, 0 ms to first >−80 dB sample; openHat.wav
+  tomLow: 0.600 s, 0 ms to first >−80 dB sample; tomLow.wav
+  tomHigh: 0.450 s, 0 ms to first >−80 dB sample; tomHigh.wav
+  crash: 1.500 s, 0 ms to first >−80 dB sample; crash.wav
+  ride: 1.000 s, 0 ms to first >−80 dB sample; ride.wav
+Drum Kit 1 [kit-1, v1]
+  kick: 0.254 s, 0 ms to first >−80 dB sample; Kick.wav
+  snare: 0.161 s, 0 ms to first >−80 dB sample; Snare.wav
+  closedHat: 0.099 s, 0 ms to first >−80 dB sample; ClosedHat1.wav
+  closedHat2: 0.224 s, 0 ms to first >−80 dB sample; ClosedHat2.wav
+  openHat: 0.888 s, 0 ms to first >−80 dB sample; OpenHat.wav
+  tomExtra1: 0.326 s, 0 ms to first >−80 dB sample; Tom1.wav
+  tomExtra2: 0.495 s, 0 ms to first >−80 dB sample; Tom2.wav
+  tomExtra3: 0.369 s, 0 ms to first >−80 dB sample; Tom3.wav
+  ride: 0.750 s, 0 ms to first >−80 dB sample; Ride.wav
+PASS: 2 kit(s), 3.26 / 192 MiB decoded stereo PCM at 48 kHz.

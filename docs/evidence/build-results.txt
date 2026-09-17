@@ -1,0 +1,8 @@
+2026-09-17 — PocketBonham handoff
+Xcode 26.3 (17C529), Swift 6.2.4, iOS 26.2 SDK, iOS 18 deployment target.
+Latest iPhone Simulator Debug build: BUILD SUCCEEDED.
+Latest physical-iPhone Release build, automatic development signing: BUILD SUCCEEDED.
+codesign --verify --deep --strict: valid on disk; satisfies its Designated Requirement.
+App installed and launched in the iPhone 16 simulator (iOS 26.3 runtime).
+Physical device install attempted: CoreDevice error 12040, kAMDMobileImageMounterDeviceLocked.
+Physical phone lock-state confirmed passcodeRequired: true. No physical install/run claimed.

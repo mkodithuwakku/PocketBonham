@@ -1,0 +1,12 @@
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' passed (6.222 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testDetailsUndoRecordingAndLifecycle]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testDetailsUndoRecordingAndLifecycle]' passed (24.496 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testOwnerKitNinePads]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testOwnerKitNinePads]' passed (13.420 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testPatternSaveChainAndRelaunch]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testPatternSaveChainAndRelaunch]' passed (42.212 seconds).
+	 Executed 4 tests, with 0 failures (0 unexpected) in 86.350 (86.352) seconds
+	 Executed 4 tests, with 0 failures (0 unexpected) in 86.350 (86.352) seconds
+	 Executed 4 tests, with 0 failures (0 unexpected) in 86.350 (86.353) seconds
+** TEST SUCCEEDED **

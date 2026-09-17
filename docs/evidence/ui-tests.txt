@@ -1,0 +1,16 @@
+Test Suite 'All tests' started at 2026-09-17 15:36:50.584.
+Test Suite 'PocketBonhamUITests.xctest' started at 2026-09-17 15:36:50.585.
+Test Suite 'PocketBonhamUITests' started at 2026-09-17 15:36:50.585.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' passed (5.191 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testDetailsUndoRecordingAndLifecycle]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testDetailsUndoRecordingAndLifecycle]' passed (24.818 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testPatternSaveChainAndRelaunch]' started.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testPatternSaveChainAndRelaunch]' passed (41.948 seconds).
+Test Suite 'PocketBonhamUITests' passed at 2026-09-17 15:38:02.543.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 71.957 (71.959) seconds
+Test Suite 'PocketBonhamUITests.xctest' passed at 2026-09-17 15:38:02.543.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 71.957 (71.959) seconds
+Test Suite 'All tests' passed at 2026-09-17 15:38:02.544.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 71.957 (71.960) seconds
+** TEST SUCCEEDED **

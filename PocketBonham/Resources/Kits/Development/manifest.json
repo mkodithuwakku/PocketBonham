@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "development-fixtures",
+  "name": "Development Sounds",
+  "assetVersion": 1,
+  "developmentFixture": true,
+  "instruments": [
+    {
+      "id": "kick",
+      "name": "Kick",
+      "file": "kick.wav",
+      "order": 0,
+      "sha256": "4a622279eba7e71413000a7d92d397a3c6fac6f2dbceaf876af6d33bf07dbd2f"
+    },
+    {
+      "id": "snare",
+      "name": "Snare",
+      "file": "snare.wav",
+      "order": 1,
+      "sha256": "7fed05ea72912492440155113eb13631024fa5217200ab22bac60fac243b5c3e"
+    },
+    {
+      "id": "closedHat",
+      "name": "Closed Hat",
+      "file": "closedHat.wav",
+      "order": 2,
+      "sha256": "165e6d91d9dd518edf46c353f4cd2046311560ea1bac0e2b041907a375102ab8",
+      "chokeGroup": "hats"
+    },
+    {
+      "id": "openHat",
+      "name": "Open Hat",
+      "file": "openHat.wav",
+      "order": 3,
+      "sha256": "f2394f06b6fde531840fb51d30e30eb9ddd89d889696b914ef66b94e4fdb9c45",
+      "chokeGroup": "hats"
+    },
+    {
+      "id": "tomLow",
+      "name": "Low Tom",
+      "file": "tomLow.wav",
+      "order": 4,
+      "sha256": "4b1287a1eb6a825019b43eb4a62ba68448f07b05b9520ee42ccab41626bbeb1b"
+    },
+    {
+      "id": "tomHigh",
+      "name": "High Tom",
+      "file": "tomHigh.wav",
+      "order": 5,
+      "sha256": "c9217cca97323cb28c7e8623e50e6499a671c8e6e5a591034e932409ae14cdb5"
+    },
+    {
+      "id": "crash",
+      "name": "Crash",
+      "file": "crash.wav",
+      "order": 6,
+      "sha256": "6d80f7e3dd096f383e258f7884b5649b6659ef366767bb11a6cd77a2edcdd5e6"
+    },
+    {
+      "id": "ride",
+      "name": "Ride",
+      "file": "ride.wav",
+      "order": 7,
+      "sha256": "169caf8ffdf9506ec20ef02ff874304eb0fdfba7d76ab4c9a92b00e410c2c4e8"
+    }
+  ]
+}

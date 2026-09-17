@@ -1,0 +1,89 @@
+[0/1] Planning build
+Building for production...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling BonhamCore Models.swift
+[4/9] Compiling KitValidator main.swift
+[4/9] Write Objects.LinkFileList
+[5/9] Linking bonham-validate-kit
+[7/9] Compiling BonhamCoreTests CoreTests.swift
+[8/10] Compiling PocketBonhamEnginePackageTests runner.swift
+[8/10] Write Objects.LinkFileList
+[9/10] Linking PocketBonhamEnginePackageTests
+Build complete! (8.61s)
+Test Suite 'All tests' started at 2026-09-17 15:44:54.068.
+Test Suite 'PocketBonhamEnginePackageTests.xctest' started at 2026-09-17 15:44:54.069.
+Test Suite 'DecoderTests' started at 2026-09-17 15:44:54.069.
+Test Case '-[BonhamCoreTests.DecoderTests testBudgetCorruptionAndExplicitTrim]' started.
+Test Case '-[BonhamCoreTests.DecoderTests testBudgetCorruptionAndExplicitTrim]' passed (0.022 seconds).
+Test Case '-[BonhamCoreTests.DecoderTests testRequiredPCMAndMP3Matrix]' started.
+Test Case '-[BonhamCoreTests.DecoderTests testRequiredPCMAndMP3Matrix]' passed (0.077 seconds).
+Test Suite 'DecoderTests' passed at 2026-09-17 15:44:54.168.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.099 (0.099) seconds
+Test Suite 'ModelTests' started at 2026-09-17 15:44:54.168.
+Test Case '-[BonhamCoreTests.ModelTests testChainsOverridesAndDuration]' started.
+Test Case '-[BonhamCoreTests.ModelTests testChainsOverridesAndDuration]' passed (0.000 seconds).
+Test Case '-[BonhamCoreTests.ModelTests testExplicitHatVariantsAndLegacyManifestCompatibility]' started.
+Test Case '-[BonhamCoreTests.ModelTests testExplicitHatVariantsAndLegacyManifestCompatibility]' passed (0.001 seconds).
+Test Case '-[BonhamCoreTests.ModelTests testOwnerKitDecodesEveryOriginalAndRetainsNineRoles]' started.
+Test Case '-[BonhamCoreTests.ModelTests testOwnerKitDecodesEveryOriginalAndRetainsNineRoles]' passed (0.153 seconds).
+Test Case '-[BonhamCoreTests.ModelTests testTimingSwingQuantizationAndDrift]' started.
+Test Case '-[BonhamCoreTests.ModelTests testTimingSwingQuantizationAndDrift]' passed (0.000 seconds).
+Test Case '-[BonhamCoreTests.ModelTests testUndoGroupsAndRedo]' started.
+Test Case '-[BonhamCoreTests.ModelTests testUndoGroupsAndRedo]' passed (0.000 seconds).
+Test Case '-[BonhamCoreTests.ModelTests testValidationLocksAndDuplicate]' started.
+Test Case '-[BonhamCoreTests.ModelTests testValidationLocksAndDuplicate]' passed (0.000 seconds).
+Test Suite 'ModelTests' passed at 2026-09-17 15:44:54.323.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.155 (0.155) seconds
+Test Suite 'RenderTests' started at 2026-09-17 15:44:54.323.
+Test Case '-[BonhamCoreTests.RenderTests testChainTempoRepeatsAndSampleIdentity]' started.
+Test Case '-[BonhamCoreTests.RenderTests testChainTempoRepeatsAndSampleIdentity]' passed (0.110 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testCountInAtTempoExtremes]' started.
+Test Case '-[BonhamCoreTests.RenderTests testCountInAtTempoExtremes]' passed (0.073 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testFourCountStraightAndNoExtraBoundary]' started.
+Test Case '-[BonhamCoreTests.RenderTests testFourCountStraightAndNoExtraBoundary]' passed (0.060 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testHatCollisionAndNewRecordedHitEligibility]' started.
+Test Case '-[BonhamCoreTests.RenderTests testHatCollisionAndNewRecordedHitEligibility]' passed (0.051 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testMotionIsCapturedOnTheAudioClockOnlyForEnabledSteps]' started.
+Test Case '-[BonhamCoreTests.RenderTests testMotionIsCapturedOnTheAudioClockOnlyForEnabledSteps]' passed (0.045 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testMutedVoicesAndSaturatedStressStayBounded]' started.
+Test Case '-[BonhamCoreTests.RenderTests testMutedVoicesAndSaturatedStressStayBounded]' passed (0.061 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testOneHourOfflineClock]' started.
+<repository>/Tests/BonhamCoreTests/CoreTests.swift:566: -[BonhamCoreTests.RenderTests testOneHourOfflineClock] : Test skipped - Run PB_LONG_TESTS=1 swift test -c release for the one-hour offline timeline.
+Test Case '-[BonhamCoreTests.RenderTests testOneHourOfflineClock]' skipped (0.002 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testOpenHatRollSurvivesBetweenClosedHatCollisions]' started.
+Test Case '-[BonhamCoreTests.RenderTests testOpenHatRollSurvivesBetweenClosedHatCollisions]' passed (0.024 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testPitchDecayLocksDoNotLeakAndStopRamps]' started.
+Test Case '-[BonhamCoreTests.RenderTests testPitchDecayLocksDoNotLeakAndStopRamps]' passed (0.026 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testPitchResamplingRejectsAboveNyquistEnergy]' started.
+Test Case '-[BonhamCoreTests.RenderTests testPitchResamplingRejectsAboveNyquistEnergy]' passed (0.013 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testStopCancelsPendingStartAndClicks]' started.
+Test Case '-[BonhamCoreTests.RenderTests testStopCancelsPendingStartAndClicks]' passed (0.060 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testSwingAndRetriggersAtAbsoluteFrames]' started.
+Test Case '-[BonhamCoreTests.RenderTests testSwingAndRetriggersAtAbsoluteFrames]' passed (0.613 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testTempoEditWaitsForBarAndLiveStepUpdate]' started.
+Test Case '-[BonhamCoreTests.RenderTests testTempoEditWaitsForBarAndLiveStepUpdate]' passed (0.048 seconds).
+Test Case '-[BonhamCoreTests.RenderTests testTenMinute137BPMHasNoCumulativeDrift]' started.
+Test Case '-[BonhamCoreTests.RenderTests testTenMinute137BPMHasNoCumulativeDrift]' passed (5.227 seconds).
+Test Suite 'RenderTests' passed at 2026-09-17 15:45:00.738.
+	 Executed 14 tests, with 1 test skipped and 0 failures (0 unexpected) in 6.413 (6.414) seconds
+Test Suite 'RepositoryTests' started at 2026-09-17 15:45:00.738.
+Test Case '-[BonhamCoreTests.RepositoryTests testCorruptFutureSchemaAndRestoreBackup]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testCorruptFutureSchemaAndRestoreBackup]' passed (0.024 seconds).
+Test Case '-[BonhamCoreTests.RepositoryTests testFailedSavePreservesPreviousAndDraft]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testFailedSavePreservesPreviousAndDraft]' passed (0.009 seconds).
+Test Case '-[BonhamCoreTests.RepositoryTests testLibraryScaleAndUnsupportedRecordIsolation]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testLibraryScaleAndUnsupportedRecordIsolation]' passed (0.412 seconds).
+Test Case '-[BonhamCoreTests.RepositoryTests testRoundTripReferenceIntegrityRecoveryAndRevision]' started.
+Test Case '-[BonhamCoreTests.RepositoryTests testRoundTripReferenceIntegrityRecoveryAndRevision]' passed (0.024 seconds).
+Test Suite 'RepositoryTests' passed at 2026-09-17 15:45:01.207.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.469 (0.470) seconds
+Test Suite 'PocketBonhamEnginePackageTests.xctest' passed at 2026-09-17 15:45:01.207.
+	 Executed 26 tests, with 1 test skipped and 0 failures (0 unexpected) in 7.135 (7.138) seconds
+Test Suite 'All tests' passed at 2026-09-17 15:45:01.207.
+	 Executed 26 tests, with 1 test skipped and 0 failures (0 unexpected) in 7.135 (7.139) seconds
+Library scale: 1,000 patterns / 200 chains read in 0.119077667 seconds
+◇ Test run started.
+↳ Testing Library Version: 1501
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
