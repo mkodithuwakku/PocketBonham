@@ -18,7 +18,7 @@ Built with **SwiftUI · UIKit · AVAudioEngine · Swift · C++17** for **iOS 18+
 
 Choose a drum and place hits on the grid. Hold a lit step and slide up or down to set its velocity. Dial in swing, add a snare roll, or pitch a single tom without changing the rest of the track. Switch to pads to overdub a performance, then save the pattern and combine it with others in a chain.
 
-The interface borrows the focus of a small hardware instrument: walnut edges, cream keycaps, brass details, dark pads and an amber tempo display. A direct instrument dropdown and floating glass transport bring that vintage character into a modern iPhone interface. [See the per-note velocity fader](docs/images/velocity.png).
+A fixed rounded top cap surrounds the camera area, making the phone feel like the instrument itself. The interface borrows the focus of a small hardware instrument: walnut edges, cream keycaps, brass details, dark pads and an amber tempo display. A direct instrument dropdown and floating glass transport bring that vintage character into a modern iPhone interface. [See the per-note velocity fader](docs/images/velocity.png).
 
 | Make the beat | Give it character | Build the arrangement |
 |---|---|---|

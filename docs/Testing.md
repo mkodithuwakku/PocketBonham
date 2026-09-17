@@ -76,6 +76,8 @@ After final layout refinements, the pad and accessibility tests passed again; th
 
 See the [vintage/velocity verification summary](evidence/vintage-velocity-verification.txt).
 
+A separate enclosure regression checks that the fixed top cap reaches the screen edge, clears the header, and stays in place while scrolling and switching workspaces. It runs alongside the pad, recording/lifecycle and large-text checks for the top-casing update: [four passing tests and build evidence](evidence/enclosure-verification.txt).
+
 Every test gets its own Debug support directory through `PB_TEST_SESSION`; never erase an ordinary user library to get a test to pass. Screenshots and full result bundles are written locally under `build/`. Selected screenshots and concise result summaries are committed under `docs/`.
 
 ## Physical acceptance still required

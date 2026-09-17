@@ -1,0 +1,15 @@
+Fixed screen enclosure verification — 2026-09-17
+Xcode 26.3; iOS 26.3 iPhone 16 simulator; iOS 18 deployment target.
+
+Affected UI suite: 4 tests passed, zero failures, 54.325 seconds.
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testAccessibilitySizeKeepsTransportAndSaveReachable]' passed (5.272 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testChassisStaysAtScreenTopWhileScrollingAndChangingTabs]' passed (13.045 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testDetailsUndoRecordingAndLifecycle]' passed (22.789 seconds).
+Test Case '-[PocketBonhamUITests.PocketBonhamUITests testOwnerKitNinePads]' passed (13.219 seconds).
+
+The enclosure regression checks screen-top alignment, header clearance, a compact camera-area cap, and unchanged position after editor scrolling and workspace changes.
+Existing checks cover all 16 steps, recording/lifecycle, nine live pads with transport clearance, and accessibility XXXL text.
+Screenshots reviewed before and after scrolling. The hardware camera cutout is not included in status-bar-hidden simulator captures.
+Signed iPhone Release build and strict signature verification succeeded.
+No audio/data-model changes; package tests were not repeated for this visual update.
+No physical-phone installation or visual acceptance was performed by the agent for this update.

@@ -17,6 +17,7 @@ struct RootView: View {
         Label("Chains", systemImage: "link")
       }.tag("chains")
     }.tint(.signal)
+      .modifier(InstrumentChassis())
       .sheet(isPresented: $settings) { SettingsView(store: store, audio: audio) }
       .alert(
         "PocketBonham",
@@ -89,11 +90,6 @@ struct PatternView: View {
   var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 10) {
-        HStack {
-          Text("PB–16  /  POCKET RHYTHM MACHINE").font(.system(size: 9, weight: .bold, design: .monospaced)).tracking(1)
-          Spacer()
-          SpeakerGrille().frame(width: 48, height: 12)
-        }.foregroundStyle(Color.walnut.opacity(0.65)).accessibilityHidden(true)
         HStack(alignment: .top) {
           VStack(alignment: .leading, spacing: 4) {
             Text("PocketBonham").font(.system(.title2, design: .serif).weight(.black))
@@ -219,7 +215,8 @@ struct PatternView: View {
         Text("A little machine. A big pocket.").font(.system(.subheadline, design: .serif).italic())
           .foregroundStyle(Color.ink.opacity(0.45)).padding(.bottom, 8)
       }.padding(14)
-    }.scrollDisabled(velocityEdit != nil)
+    }.scrollIndicators(.hidden)
+      .scrollDisabled(velocityEdit != nil)
       .onDisappear { finishVelocity() }
       .onChange(of: scenePhase) { _, phase in if phase != .active { finishVelocity() } }
       .onChange(of: store.selectedTrack) { _, _ in finishVelocity() }

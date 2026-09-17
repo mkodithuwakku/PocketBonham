@@ -143,3 +143,56 @@ struct VelocityFader: View {
       .accessibilityIdentifier("velocityFader")
   }
 }
+
+/// The enclosure belongs to the screen, not the scrolling editor. Its top surface
+/// extends through the system safe area so the camera cutout sits in the casing.
+struct InstrumentChassis: ViewModifier {
+  func body(content: Content) -> some View {
+    GeometryReader { geometry in
+      content
+        .padding(.top, 22)
+        .overlay(alignment: .top) {
+          InstrumentTopCap()
+            .frame(height: geometry.safeAreaInsets.top + 22)
+            .offset(y: -geometry.safeAreaInsets.top)
+            .allowsHitTesting(false)
+        }
+    }.statusBarHidden(true)
+  }
+}
+
+private struct InstrumentTopCap: View {
+  private let outline = UnevenRoundedRectangle(
+    topLeadingRadius: 48, bottomLeadingRadius: 9,
+    bottomTrailingRadius: 9, topTrailingRadius: 48)
+
+  var body: some View {
+    ZStack(alignment: .bottom) {
+      outline.fill(LinearGradient(
+        colors: [Color(red: 0.16, green: 0.10, blue: 0.07), .walnut,
+          Color(red: 0.36, green: 0.22, blue: 0.13)],
+        startPoint: .top, endPoint: .bottom))
+      outline.strokeBorder(Color.brass.opacity(0.65), lineWidth: 1.5)
+      outline.inset(by: 4).stroke(Color.casing.opacity(0.18), lineWidth: 1)
+      HStack {
+        ScrewHead()
+        Spacer()
+        ScrewHead()
+      }.padding(.horizontal, 28).frame(maxHeight: .infinity, alignment: .center)
+      HStack(spacing: 8) {
+        Text("PB–16  /  POCKET RHYTHM MACHINE")
+          .font(.system(size: 9, weight: .bold, design: .monospaced)).tracking(1)
+          .lineLimit(1).minimumScaleFactor(0.7)
+        Spacer(minLength: 0)
+        SpeakerGrille().frame(width: 40, height: 9)
+          .colorMultiply(.brass)
+      }.foregroundStyle(Color.casing.opacity(0.85))
+        .padding(.horizontal, 18).padding(.bottom, 7)
+    }
+    .background(Color.black)
+    .shadow(color: Color.ink.opacity(0.35), radius: 2, y: 3)
+    .accessibilityElement(children: .ignore)
+    .accessibilityLabel("PocketBonham PB–16 enclosure")
+    .accessibilityIdentifier("instrumentTopCap")
+  }
+}

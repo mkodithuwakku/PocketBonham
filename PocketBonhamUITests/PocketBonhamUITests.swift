@@ -1,6 +1,37 @@
 import XCTest
 
 final class PocketBonhamUITests: XCTestCase {
+  @MainActor func testChassisStaysAtScreenTopWhileScrollingAndChangingTabs() throws {
+    let app = XCUIApplication()
+    app.launchEnvironment["PB_TEST_SESSION"] = UUID().uuidString
+    app.launch()
+    let cap = app.descendants(matching: .any)["instrumentTopCap"].firstMatch
+    XCTAssertTrue(cap.waitForExistence(timeout: 10))
+    let topFrame = cap.frame
+    XCTAssertEqual(topFrame.minY, app.frame.minY, accuracy: 1,
+      "The casing must extend through the top safe area")
+    XCTAssertGreaterThanOrEqual(app.staticTexts["PocketBonham"].frame.minY, topFrame.maxY,
+      "The wordmark must be fully below the casing")
+    XCTAssertGreaterThanOrEqual(app.buttons["savePattern"].frame.minY, topFrame.maxY,
+      "The casing cannot cover the editor header")
+    XCTAssertGreaterThan(topFrame.height, 60, "The end cap must enclose the camera area")
+    XCTAssertLessThan(topFrame.height, 110, "Controls must remain below a compact end cap")
+    let initial = XCTAttachment(screenshot: app.screenshot())
+    initial.name = "Fixed enclosure — screen top"
+    initial.lifetime = .keepAlways
+    add(initial)
+    app.scrollViews.firstMatch.swipeUp()
+    XCTAssertEqual(cap.frame, topFrame, "The physical top cannot move with the editor")
+    let scrolled = XCTAttachment(screenshot: app.screenshot())
+    scrolled.name = "Fixed enclosure — editor scrolled"
+    scrolled.lifetime = .keepAlways
+    add(scrolled)
+    for tab in ["Library", "Chains", "Pattern"] {
+      app.tabBars.buttons[tab].tap()
+      XCTAssertEqual(cap.frame, topFrame, "The enclosure must stay fixed in \(tab)")
+    }
+  }
+
   @MainActor func testInstrumentDropdownPreservesIndependentSteps() throws {
     let app = XCUIApplication()
     app.launchEnvironment["PB_TEST_SESSION"] = UUID().uuidString

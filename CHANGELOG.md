@@ -18,6 +18,8 @@
 
 ### Interface
 
+- Added a fixed rounded walnut/brass top cap extending around the Dynamic Island, with the model engraving on the casing and an immersive hidden status bar.
+
 - Added a vintage cream, walnut and brass theme with an amber display and tactile step/pad surfaces.
 - Blended the instrument selector and floating transport with native Liquid Glass on iOS 26 and material fallbacks on older systems.
 - Replaced horizontal instrument scrolling with a complete-kit dropdown, current-selection checkmark, mute/solo labels and direct pad-page navigation.
